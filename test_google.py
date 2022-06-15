@@ -6,6 +6,6 @@ def test_find_selene_positive():
 
 def test_find_selene_negative():
     browser.element('[name="q"]').should(be.blank).type('selene').press_enter()
-    browser.element('[id="search"]').should(have.no.text('Java is the easiest programming language'))
+    browser.element('[id="search"]').should(have.text('Java is the easiest programming language'))
 
 
