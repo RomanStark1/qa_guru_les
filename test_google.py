@@ -1,11 +1,14 @@
 from conftest import *
 
-def test_find_selene_positive():
-    browser.element('[name="q"]').should(be.blank).type('selene').press_enter()
-    browser.element('[id="search"]').should(have.text('User-oriented Web UI browser tests in Python'))
+valid_data = 'selene'
+not_valid_data = 'r32rdsf'
+result = 'User-oriented Web UI browser tests in Python'
 
-def test_find_selene_negative():
-    browser.element('[name="q"]').should(be.blank).type('selene').press_enter()
-    browser.element('[id="search"]').should(have.text('Java is the easiest programming language'))
+def test_first_positive(open_google):
+    browser.element('[name="q"]').should(be.blank).type(valid_data).press_enter()
+    browser.element('[id="search"]').should(have.text(result))
 
+def test_second_negative(open_google):
+    browser.element('[name="q"]').should(be.blank).type(not_valid_data).press_enter()
+    browser.element('[id="search"]').should(have.no.text(result))
 
